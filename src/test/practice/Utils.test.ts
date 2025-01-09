@@ -1,6 +1,28 @@
-import { toUpperCase, getStringInfo } from "./../app/Utils";
+import { toUpperCase, getStringInfo, StringUtils } from "../app/practice/Utils";
 
 describe("Utils test suite", () => {
+  describe("StringUtils tests", () => {
+    let sut: StringUtils;
+
+    beforeEach(() => {
+      sut = new StringUtils();
+    });
+
+    it("Should return correct upperCase", () => {
+      const actual = sut.toUpperCase("abc");
+      expect(actual).toBe("ABC");
+    });
+
+    // can be used to leave todos on what you need to write tests for
+    it.todo("test long strings");
+
+    it("Should throw error on invalid argument - arrow function", () => {
+      expect(() => {
+        sut.toUpperCase("");
+      }).toThrow();
+    });
+  });
+
   it("should return uppercase of a valid string", () => {
     // arrange
     const sut = toUpperCase;
@@ -18,9 +40,9 @@ describe("Utils test suite", () => {
       { input: "abc", expected: "ABC" },
       { input: "My-String", expected: "MY-STRING" },
       { input: "def", expected: "DEF" },
-    ])("$input toUpperCase should be $expected", ({input, expected}) => {
-        const actual = toUpperCase(input)
-        expect(actual).toBe(expected)
+    ])("$input toUpperCase should be $expected", ({ input, expected }) => {
+      const actual = toUpperCase(input);
+      expect(actual).toBe(expected);
     });
   });
 
